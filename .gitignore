@@ -1,0 +1,10 @@
+# Private keys (Never commit private signing keys!)
+*.rsa
+!*.rsa.pub
+keys/*.rsa
+!keys/*.rsa.pub
+
+# Temporary & build caches
+.abuild/
+*.tmp
+*.log

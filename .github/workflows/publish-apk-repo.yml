@@ -32,11 +32,16 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Import Signing Key & Generate Repository Index
+      - name: Trust Repository Public Key & Import Private Signing Key
         env:
           APK_PRIVATE_KEY: ${{ secrets.APK_PRIVATE_KEY }}
           REQUIRE_SIGNING: "1"
         run: |
+          mkdir -p /etc/apk/keys
+          if [ -f "keys/crest@crestcode.rsa.pub" ]; then
+            cp -f keys/crest@crestcode.rsa.pub /etc/apk/keys/
+          fi
+
           if [ -n "$APK_PRIVATE_KEY" ]; then
             echo "==> Importing production APK signing key..."
             mkdir -p keys

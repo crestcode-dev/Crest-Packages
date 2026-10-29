@@ -10,6 +10,12 @@ PUB_KEY="${KEYS_DIR}/${KEY_NAME}"
 echo "==> Generating Alpine APK Repository Index..."
 echo "    Repository Root: ${REPO_ROOT}"
 
+# Ensure public key is trusted locally so apk index can verify packages
+if [ -f "${PUB_KEY}" ]; then
+    mkdir -p /etc/apk/keys 2>/dev/null || true
+    cp -f "${PUB_KEY}" /etc/apk/keys/ 2>/dev/null || true
+fi
+
 # Architectures to index
 ARCHES=("aarch64" "x86_64")
 

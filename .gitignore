@@ -8,3 +8,4 @@ keys/*.rsa
 .abuild/
 *.tmp
 *.log
+**/target/

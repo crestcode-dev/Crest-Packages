@@ -1,6 +1,6 @@
 # Maintainer: CrestCode Team <contact@crestcode.dev>
 pkgname=cpm
-pkgver=0.1.0
+pkgver=0.1.1
 pkgrel=0
 pkgdesc="CrestCode Package Manager - Modern APK frontend & Extension Manager"
 url="https://github.com/crestcode/cpm"
@@ -10,5 +10,5 @@ options="!check !strip"
 somask="libc.so libdl.so libm.so"
 
 package() {
-    install -Dm755 "${srcdir}"/cpm "$pkgdir"/usr/bin/cpm
+    install -Dm755 /usr/local/bin/cpm "$pkgdir"/usr/bin/cpm
 }
